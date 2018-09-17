@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
@@ -13,6 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Task {
 
+    @Id
+    @GeneratedValue()
     private Long id;
     private String name;
     @JsonFormat(pattern = "MM/DD/YYYY")
