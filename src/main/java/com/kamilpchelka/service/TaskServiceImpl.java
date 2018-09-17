@@ -2,7 +2,9 @@ package com.kamilpchelka.service;
 
 import com.kamilpchelka.domain.Task;
 import com.kamilpchelka.respository.TaskRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 
 
