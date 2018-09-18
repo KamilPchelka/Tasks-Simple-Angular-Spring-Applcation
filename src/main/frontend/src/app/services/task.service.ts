@@ -3,10 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Task} from "../models/task";
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class TaskServiceService {
+
+
+export class TaskService {
 
 
   tasksURL = 'http://localhost:8080/api/tasks/';
