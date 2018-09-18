@@ -1,25 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Due Date</th>
-          <th scope="col">Completed</th>
-        </tr>
-        </thead>
-        <tbody>
+<div class="col">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Completed</th>
+    </tr>
+    </thead>
+    <tbody>
 
-        <tr *ngFor="let task of tasks">
-          <th scope="row">{{task.id}}</th>
-          <td>{{task.name}}</td>
-          <td>{{task.dueDate}}</td>
-          <td>{{task.completed}}</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <tr *ngFor="let task of tasks">
+      <th scope="row">{{task.id}}</th>
+      <td>{{task.name}}</td>
+      <td>{{task.dueDate}}</td>
+      <td>{{task.completed}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+
