@@ -22,7 +22,7 @@ public class TaskController {
         return this.taskService.list();
     }
 
-    @PostMapping("/save")
+    @PostMapping(value = {",", "/"})
     public Task saveTask(@RequestBody Task task) {
         return this.taskService.save(task);
     }
