@@ -1,7 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {BehaviorSubject, Observable, timer} from "rxjs";
 import {Task} from "../models/task";
+
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 
 @Injectable({
@@ -11,14 +16,24 @@ import {Task} from "../models/task";
 
 export class TaskService {
 
-
+  tasks = new BehaviorSubject<Task[]>([]);
   tasksURL = 'http://localhost:8080/api/tasks/';
 
   constructor(private http: HttpClient) {
+
+    timer(1000, 1000).subscribe(() => {
+      this.http.get<Task[]>(this.tasksURL).subscribe(value => this.tasks.next(value))
+    });
   }
 
-
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.tasksURL);
+    return this.tasks.asObservable();
+  }
+
+  updateTask(task: Task): Observable<Task> {
+    const url = `${this.tasksURL}`;
+
+    return this.http.post<Task>(url, task, httpOptions)
+
   }
 }

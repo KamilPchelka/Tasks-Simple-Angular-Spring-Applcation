@@ -1,21 +1,23 @@
 <h5 class="card-title">Tasks list</h5>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Completed</th>
-    </tr>
-    </thead>
-    <tbody>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Due Date</th>
+    <th scope="col">Completed</th>
+  </tr>
+  </thead>
+  <tbody>
 
-    <tr *ngFor="let task of tasks">
-      <th scope="row">{{task.id}}</th>
-      <td>{{task.name}}</td>
-      <td>{{task.dueDate}}</td>
-      <td>{{task.completed}}</td>
-    </tr>
-    </tbody>
-  </table>
+  <tr *ngFor="let task of tasks">
+    <th [ngClass]="{'text-success': task.completed}" scope="row">{{task.id}}</th>
+    <td [ngClass]="{'text-success': task.completed}">{{task.name}}</td>
+    <td [ngClass]="{'text-success': task.completed}">{{task.dueDate}}</td>
+    <td class="text-center">
+      <input [checked]="task.completed" type="checkbox" name="completed" id="completed" (change)="updateTask(task)">
+    </td>
+  </tr>
+  </tbody>
+</table>
 
