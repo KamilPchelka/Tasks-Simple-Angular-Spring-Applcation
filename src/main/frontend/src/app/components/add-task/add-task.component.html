@@ -1,9 +1,9 @@
 <h5 class="card-title">Add new task</h5>
-<form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+<form (submit)="onSubmit()" #taskForm="ngForm">
   <div class="form-group">
     <label for="taskName"></label>
     <input class="form-control" type="text" name="taskName" id="taskName" placeholder="Enter task name"
-           [(ngModel)]="task.id" [ngClass]="{'is-invalid': taskName.errors && taskName.touched}"
+           [(ngModel)]="task.name" [ngClass]="{'is-invalid': taskName.errors && taskName.touched}"
            #taskName="ngModel" required minlength="2">
     <div [hidden]="!taskName.errors?.required" class="invalid-feedback">
       Task name required

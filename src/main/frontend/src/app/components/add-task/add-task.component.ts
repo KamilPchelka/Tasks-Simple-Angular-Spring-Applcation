@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Task} from "../../models/task";
+import {TaskService} from "../../services/task.service";
 
 @Component({
   selector: 'app-add-task',
@@ -12,22 +13,24 @@ export class AddTaskComponent implements OnInit {
   @ViewChild('taskForm') taskForm;
 
   task: Task = {
-    id: undefined,
+    id: -1,
     name: '',
     dueDate: '',
     completed: false
 
   };
 
-  constructor() {
+  constructor(private taskService: TaskService) {
   }
 
   ngOnInit() {
   }
 
-  //TODO create logic that uploads new task to the server
   onSubmit() {
     console.log(this.task);
-    this.taskForm.reset()
+    this.taskService.updateOrCreateTask(this.task).subscribe(value => {
+      console.log(value);
+    });
+    this.taskForm.reset();
   }
 }
