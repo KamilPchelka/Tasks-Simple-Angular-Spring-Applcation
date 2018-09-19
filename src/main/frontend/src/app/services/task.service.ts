@@ -30,7 +30,7 @@ export class TaskService {
     return this.tasks.asObservable();
   }
 
-  updateTask(task: Task): Observable<Task> {
+  updateOrCreateTask(task: Task): Observable<Task> {
     const url = `${this.tasksURL}`;
 
     return this.http.post<Task>(url, task, httpOptions)

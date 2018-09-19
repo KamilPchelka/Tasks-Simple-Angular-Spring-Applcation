@@ -23,7 +23,7 @@ export class TasksComponent implements OnInit {
   updateTask(task: Task) {
     try {
       task.completed = !task.completed;
-      this.taskService.updateTask(task).subscribe();
+      this.taskService.updateOrCreateTask(task).subscribe();
     }
     catch (e) {
       task.completed = !task.completed;
