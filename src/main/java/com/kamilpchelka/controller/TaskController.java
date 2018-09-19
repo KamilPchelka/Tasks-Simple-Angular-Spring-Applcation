@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tasks")
+@CrossOrigin(origins = "*")
 public class TaskController {
 
 
@@ -21,7 +22,7 @@ public class TaskController {
         return this.taskService.list();
     }
 
-    @PostMapping("/save")
+    @PostMapping(value = {",", "/"})
     public Task saveTask(@RequestBody Task task) {
         return this.taskService.save(task);
     }
